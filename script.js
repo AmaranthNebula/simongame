@@ -37,6 +37,11 @@ $(document).ready(function() {
             "top": (centerDiameter/2) +"px",
             "left": (centerDiameter/2) + "px"
         });
+        //set size and position of step count display
+        $("#counterDisplay").css({
+           
+            
+        });
     } //end of resizeElements
    
     $(window).resize(function(){
