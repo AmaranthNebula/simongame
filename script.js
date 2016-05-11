@@ -41,6 +41,24 @@ $(document).ready(function() {
         });
         //set size and position of step count display
         $("#counterDisplay p").css("font-size", displayHeight + "px");
+        
+        //set size of on/off toggle
+        //width is 20% of parent's width
+       var toggleWidth = $("#toggleContainer").outerWidth(true)*0.2;
+       var borderSizeDouble = 4;
+       //height is a little more than half the width
+       var toggleHeight = toggleWidth*0.5667;
+       var textSize = toggleHeight;
+       
+       //change size of toggle and text size
+       $("#toggleContainer p").css("font-size", textSize + "px");
+       
+       $(".toggleSwitch").css({
+          "width": (toggleWidth + borderSizeDouble ) + "px",
+          "height": (toggleHeight + borderSizeDouble) + "px"
+       });
+
+        
     } //end of resizeElements
    
     $(window).resize(function(){
