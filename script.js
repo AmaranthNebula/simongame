@@ -20,7 +20,9 @@ $(document).ready(function() {
         var centerDiameter = diameter/2;
         var outerPadding = diameter * 0.05;
         
-        
+        //get height of display counterDisplay
+        var displayHeight = $("#counterDisplay").outerHeight(true);
+
         //set sizes
         $("#baseElement").css({
             "height": diameter + "px",
@@ -38,13 +40,10 @@ $(document).ready(function() {
             "left": (centerDiameter/2) + "px"
         });
         //set size and position of step count display
-        $("#counterDisplay").css({
-           
-            
-        });
+        $("#counterDisplay p").css("font-size", displayHeight + "px");
     } //end of resizeElements
    
     $(window).resize(function(){
-       resizeElements(); 
+        resizeElements();
     });
 });
