@@ -21,7 +21,7 @@ $(document).ready(function() {
         var outerPadding = diameter * 0.05;
         
         //get height of display counterDisplay
-        var displayHeight = $("#counterDisplay").outerHeight(true);
+        var displayHeight = centerDiameter*0.2;
 
         //set sizes
         $("#baseElement").css({
@@ -52,12 +52,14 @@ $(document).ready(function() {
        
        //change size of toggle and text size
        $("#toggleContainer p").css("font-size", textSize + "px");
-       
        $(".toggleSwitch").css({
           "width": (toggleWidth + borderSizeDouble ) + "px",
           "height": (toggleHeight + borderSizeDouble) + "px"
        });
-
+       
+       
+       // set size of strict mode toggle and text size
+       $(".toggleModeButton").css("font-size", (toggleHeight*0.7) + "px");
         
     } //end of resizeElements
    
