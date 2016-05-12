@@ -14,6 +14,7 @@ $(document).ready(function() {
         //check height and width and find the smaller dimension
         var width = $(window).outerWidth(true);
         var height = $(window).outerHeight(true);
+
         //diameter of base is 80% of the height or width (whichevers smaller)
         var diameter = Math.min(height, width)*0.8;
         // diameter of center panel
