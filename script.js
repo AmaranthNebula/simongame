@@ -23,7 +23,7 @@ $(document).ready(function() {
         //get height of display counterDisplay
         var displayHeight = centerDiameter*0.2;
 
-        //set sizes
+        //set sizes for base circle
         $("#baseElement").css({
             "height": diameter + "px",
             "width": diameter + "px",
@@ -32,7 +32,7 @@ $(document).ready(function() {
             "left": ((width-diameter)/2) + "px"
             
         });
-        
+        // set size of inner circle that contains game controls
         $("#centerPanel").css({
             "height": centerDiameter + "px",
             "width": centerDiameter + "px",
@@ -50,7 +50,7 @@ $(document).ready(function() {
        var toggleHeight = toggleWidth*0.5667;
        var textSize = toggleHeight;
        
-       //change size of toggle and text size
+       //change size of on/off toggle and its text size
        $("#toggleContainer p").css("font-size", textSize + "px");
        $(".toggleSwitch").css({
           "width": (toggleWidth + borderSizeDouble ) + "px",
@@ -58,8 +58,10 @@ $(document).ready(function() {
        });
        
        
-       // set size of strict mode toggle and text size
+       // set size of strict mode toggle's text size
        $(".toggleModeButton").css("font-size", (toggleHeight*0.7) + "px");
+       //set font size of start reset button's label
+       $("#startResetLabel").css("font-size", (toggleHeight*0.7) + "px");
         
     } //end of resizeElements
    

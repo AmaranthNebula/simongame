@@ -209,8 +209,6 @@ input:checked + .slider:before {
     position: relative;  
     top:20%;  
     display: block;
-    /*width: 70px;*/
-    /*height: 45px;*/
     width: 25%;
     height: 14.167%;
     border-radius: 34px;  
@@ -254,5 +252,33 @@ input:checked + .toggleButton:before {
 
 /*end of enable/disable toggle buttons styling*/
 #startResetLabel {
+    margin: auto;
+    display: block;
     position: relative;
+    top: 25%;
+    font-weight: bold;
+    font-size: 20.4px;
+    width: 25%;
+    height: 14.167%;    
+}
+#startResetLabel input {
+    position: absolute;
+    top: 15%;
+    left: 100%;
+    border: none;
+    outline: none;
+    height: 76.47%;
+    width: 43.33%;
+    background: #dfb75c; /* For browsers that do not support gradients */
+    background-image: radial-gradient(farthest-corner at 40px 40px , #fce781 0%, #654512 50%, #fce781 80%);
+    box-shadow: 0px 2px 0 1px #3D2909;
+    border-radius: 50%;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+#startResetLabel input:active {
+    -webkit-transform: translateY(2px);
+    -ms-transform: translateY(2px);
+    transform: translateY(2px);    
+    box-shadow: 0px 0px 0 2px #3D2909;
 }
