@@ -6,7 +6,25 @@ $(document).ready(function() {
       $(this).addClass(name + "Activated"); 
    });
     
-    
+    // when strict mode toggle is clicked
+    // check or uncheck button
+    $(".toggleModeButton").click(function() {
+        if ($(".toggleModeButton input").prop("checked") === false) {
+            $(".toggleModeButton input").prop("checked", true);
+        }else {
+            $(".toggleModeButton input").prop("checked", false);
+        }
+    });
+    // on and off button slide toggle event handler
+    $(".toggleSwitch").click(function() {
+        // check or uncheck toggle button
+        if ($(".toggleSwitch input").prop("checked") === false) {
+            $(".toggleSwitch input").prop("checked", true);
+        }else {
+            $(".toggleSwitch input").prop("checked", false);
+        }        
+    });
+
     
     
     

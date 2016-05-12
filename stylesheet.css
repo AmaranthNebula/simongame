@@ -261,7 +261,7 @@ input:checked + .toggleButton:before {
     width: 25%;
     height: 14.167%;    
 }
-#startResetLabel input {
+#startResetLabel button {
     position: absolute;
     top: 15%;
     left: 100%;
@@ -276,7 +276,7 @@ input:checked + .toggleButton:before {
     -webkit-transition: .2s;
     transition: .2s;
 }
-#startResetLabel input:active {
+#startResetLabel button:active {
     -webkit-transform: translateY(2px);
     -ms-transform: translateY(2px);
     transform: translateY(2px);    
