@@ -48,54 +48,70 @@ button {
 #greenButton {
     border-top-left-radius: 100%;
 }
-#greenButton:hover {
-    background-color: #54c342;
-}
 .greenInactive {
     background-color: #35b520;
 }
+.greenInactive:hover {
+    background-color: #54c342;
+}
 .greenActivated {
+    background-color: #7ad96b;
+}
+.greenActivated:hover {
     background-color: #7ad96b;
 }
 
 #redButton {
     border-top-right-radius: 100%;
 }
-#redButton:hover {
-    background-color: #e84f56;
-}
 .redInactive {
     background-color: #d7262f;
+}
+.redInactive:hover {
+    background-color: #e84f56;
 }
 .redActivated {
     background-color: #fb7c82;
 }
+.redActivated:hover {
+    background-color: #fb7c82;
+}
+
 
 #yellowButton {
     border-bottom-left-radius: 100%;
 }
-#yellowButton:hover {
-    background-color: #ece250;
-}
 .yellowInactive {
     background-color: #dbd027;    
+}
+.yellowInactive:hover {
+    background-color: #ece250;
 }
 .yellowActivated {
     background-color: #fff77e;
 }
+.yellowActivated:hover {
+    background-color: #fff77e;
+}
+
 
 #blueButton {
     border-bottom-right-radius: 100%;
 }
-#blueButton:hover {
-    background-color: #405d9e;
-}
+
 .blueInactive {
     background-color: #274793; 
+}
+.blueInactive:hover {
+    background-color: #405d9e;
 }
 .blueActivated {
     background-color: #647db6;
 }
+.blueActivated:hover {
+    background-color: #647db6;
+}
+
 #centerPanel {
     position: absolute;
     top: 22vh;
