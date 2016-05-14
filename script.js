@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var userTimeOutLength = 2000;
+    var userTimeOutLength = 10000;
     var highlightButtonLemgth = 750;
     var timeBetweenMoves = 200;
     var buttonColors = ["green", "red", "yellow", "blue"];
@@ -46,6 +46,10 @@ $(document).ready(function() {
         $("#startButton").prop("disabled", false);
     }
     function turnOff() {
+        stopMoveTimer();
+        level = 0;
+        simulatedMoves = [];
+        userMoves = [];
         updateDisplay("");
         $("button").prop("disabled", true);
     }
@@ -70,16 +74,17 @@ $(document).ready(function() {
     function getNextLevel() {
         level++;
         updateDisplay(level);
-        //replay moves if there are any
-        replayMoves();
         // generate random number between 0 and 3
         var random = Math.floor(Math.random()*4); 
         //save chosen button by adding to simulatedMoves array
-        simulatedMoves.push(buttonColors[random]);
+        simulatedMoves.push(buttonColors[random]);        
         
-        flashButton(buttonColors[random]);
-        //start timer for user to respond
-        resetMoveTimer();
+        // wait for replay to finish before starting user timer
+        //var completeReplay = [Promise.resolve(replayMoves())];
+        Promise.resolve(replayMoves()).then(function(complete){
+            //start timer for user to respond
+            resetMoveTimer();
+          });
     }
     
     // update level display on GUI with passed string
@@ -114,7 +119,6 @@ $(document).ready(function() {
         clearTimeout(timer);
         //restart timer
         timer = setTimeout(function() {
-                // call function replay moves
                 wrongAnswer();
             }, userTimeOutLength);
     }
@@ -133,9 +137,10 @@ $(document).ready(function() {
 
         // call function to play sound and highlight button when user clicks
         flashButton(name);
-
+        // add move to userMoves array
+        userMoves.push(name);
         // check if user has completed all moves correctly
-        var evaluateMove = checkMoves();        
+        var evaluateMove = checkMoves();   
         // aftter level 20 end game
         if (evaluateMove.correctMoves && evaluateMove.sequenceComplete && level === 20) {
             gameWon();
@@ -144,7 +149,8 @@ $(document).ready(function() {
         else if (evaluateMove.correctMoves && evaluateMove.sequenceComplete) {
             //stop timer
             stopMoveTimer();
-            
+            // clear user input
+            userMoves = [];
             // get next level
             getNextLevel();
         }
@@ -171,14 +177,13 @@ $(document).ready(function() {
         if (simulatedMoves.length === userMoves.length) {
             completedSequence = true;
         }
-        
         return {"correctMoves": isCorrect, "sequenceComplete": completedSequence};
     } // end of correctAnswers    
     
     // when called starts new game is strict mode is on
     // or flashes warning and replays moves
     function wrongAnswer() {
-        updateDisplay("--");
+        updateDisplay("!!");
         
         setTimeout(function() {
             if(strictModeOn) {
@@ -199,22 +204,30 @@ $(document).ready(function() {
     // replay all moves chosen by computer
     // by highlighting buttons and playing sounds
     function replayMoves() {
+        var complete = false;
         // disable rgby buttons to prevent user interaction while replaying moves
         $("#baseElement > button").prop("disabled", true);
-        for (var i = 0; i < simulatedMoves.length; i++) {
-            setTimeout(function() {
-                flashButton(buttonColors[i]);
+        var index = 0;
+          var replay = setInterval(function() {
+                if (index < simulatedMoves.length) {
+                    flashButton(simulatedMoves[index]);
+                    index++;
+                }else {
+                    clearInterval(replay);
+                }
             },highlightButtonLemgth + timeBetweenMoves);
-        }
         //re-enable the buttons
         $("#baseElement > button").prop("disabled", false);
+         complete = true;
+        return complete;
     }
     
     // end game after level 20
     // just update display to show win and stopTimerd
     function gameWon() {
-        updateDisplay("!!");
+        updateDisplay("win!");
         stopMoveTimer();
+        $("#baseElement > button").prop("disabled", true);
     }
     
 
