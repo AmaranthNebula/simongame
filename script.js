@@ -142,7 +142,7 @@ $(document).ready(function() {
         // check if user has completed all moves correctly
         var evaluateMove = checkMoves();   
         // aftter level 20 end game
-        if (evaluateMove.correctMoves && evaluateMove.sequenceComplete && level === 20) {
+        if (evaluateMove.correctMoves && evaluateMove.sequenceComplete && level === 4) {
             gameWon();
         }
         // if all moves correct, get next level's move
@@ -228,6 +228,11 @@ $(document).ready(function() {
         updateDisplay("win!");
         stopMoveTimer();
         $("#baseElement > button").prop("disabled", true);
+        // after 2 seconds start a new game
+        setTimeout(function() {
+            newGame();
+        }, 2000);
+        
     }
     
 
